@@ -1,7 +1,7 @@
 all: build
 
 build:
-	@docker build --tag=gedeeinstein/openfire .
+	@docker build --tag=gedeadisurya/docker-openfire .
 
 release: build
-	@docker build --tag=gedeeinstein/openfire:$(shell cat VERSION) .
+	@docker build --tag=gedeadisurya/docker-openfire:$(shell cat VERSION) .
