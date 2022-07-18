@@ -1,4 +1,4 @@
-# gedeeinstein/openfire:4.6.4
+# gedeeinstein/openfire:4.7.2
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
@@ -36,7 +36,7 @@ Insufficient input validation in the Openfire setup process can cause failures w
 
 ### Openfire doesn't write logs to the normal location
 
-Openfire 4.6.4 and later use Log4j 2, which uses a new configuration file. Please make sure you include a `log4j2.xml` file in your configuration directory, and use the newest 4.6.4 or 4.6.4 image available on Docker Hub.
+Openfire 4.7.2 and later use Log4j 2, which uses a new configuration file. Please make sure you include a `log4j2.xml` file in your configuration directory, and use the newest 4.7.2 or 4.6.4 image available on Docker Hub.
 
 ## Other issues
 
