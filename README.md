@@ -1,4 +1,4 @@
-# gedeeinstein/openfire:4.7.2
+# gedeeinstein/openfire:4.7.3
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
