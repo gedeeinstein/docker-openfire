@@ -57,7 +57,7 @@ If the above recommendations do not help then [report your issue](../../issues/n
 Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/gizmotronic/openfire) and is the recommended method of installation.
 
 ```bash
-docker pull gedeadisurya/openfire:latest
+docker pull gedeadisurya/gajim:latest
 ```
 
 Alternatively you can build the image yourself.
