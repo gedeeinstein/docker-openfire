@@ -1,4 +1,4 @@
-# gedeeinstein/openfire:4.7.3
+# gedeeinstein/openfire:4.7.5
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
@@ -57,7 +57,7 @@ If the above recommendations do not help then [report your issue](../../issues/n
 Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/gizmotronic/openfire) and is the recommended method of installation.
 
 ```bash
-docker pull gedeeinstein/openfire:4.6.4
+docker pull gedeadisurya/openfire:latest
 ```
 
 Alternatively you can build the image yourself.
