@@ -1,4 +1,4 @@
-# gedeeinstein/openfire:4.7.5
+# gedeeinstein/openfire:4.8.0
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
@@ -17,7 +17,8 @@
 
 Openfire is a real time collaboration (RTC) server licensed under the Open Source Apache License. It uses the only widely adopted open protocol for instant messaging, XMPP (also called Jabber). Openfire is incredibly easy to setup and administer, but offers rock-solid security and performance.
 
-Due to Oracle Java license changes, this image is built exclusively using OpenJDK starting with Openfire 4.3.2.
+Due to Oracle Java license changes, this image is built exclusively using OpenJDK starting with Openfire 4.8.0
+
 This project is otherwise almost entirely identical to [sameersbn/openfire](/sameersbn/openfire).
 
 ## Contributing
@@ -36,7 +37,7 @@ Insufficient input validation in the Openfire setup process can cause failures w
 
 ### Openfire doesn't write logs to the normal location
 
-Openfire 4.7.2 and later use Log4j 2, which uses a new configuration file. Please make sure you include a `log4j2.xml` file in your configuration directory, and use the newest 4.7.2 or 4.6.4 image available on Docker Hub.
+Openfire 4.8.0 and later use Log4j 2, which uses a new configuration file. Please make sure you include a `log4j2.xml` file in your configuration directory, and use the newest 4.7.2 or 4.6.4 image available on Docker Hub.
 
 ## Other issues
 
@@ -74,7 +75,7 @@ Start Openfire using:
 docker run --name openfire -d --restart=always \
   --publish 9090:9090 --publish 5222:5222 --publish 7777:7777 \
   --volume /srv/docker/openfire:/var/lib/openfire \
-  gedeeinstein/openfire:4.6.4
+  gedeeinstein/openfire:latest
 ```
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
@@ -101,7 +102,7 @@ You may append options to the startup command to configure the JVM:
 ```bash
 docker run -name openfire -d \
   [DOCKER_OPTIONS] \
-  gedeeinstein/openfire:4.6.4 \
+  gedeeinstein/openfire:latest \
   -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode
 ```
 
@@ -122,7 +123,7 @@ To upgrade to newer releases:
   1. Download the updated Docker image:
 
   ```bash
-  docker pull gedeeinstein/openfire:4.6.4
+  docker pull gedeeinstein/openfire:latest
   ```
 
   2. Stop the currently running image:
@@ -142,7 +143,7 @@ To upgrade to newer releases:
   ```bash
   docker run -name openfire -d \
     [OPTIONS] \
-    gedeeinstein/openfire:4.6.4
+    gedeeinstein/openfire:latest
   ```
 
 ## Shell Access
