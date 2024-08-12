@@ -1,7 +1,7 @@
 version: '2'
 services:
   openfire:
-    image: gedeadisurya/docker-openfire:latest
+    image: gedeadisurya/docker-openfire:4.8.3
     ports:
       - "9090:9090/tcp"
       - "9091:9091/tcp"
@@ -21,5 +21,5 @@ services:
       - "7443:7443/tcp"
       - "9997:9997/tcp"
     volumes:
-      - /srv/dev-disk-by-label-KAPITDATA3/ITFiles/3.Backup/DOCKER/Gajim_Openfire:/var/lib/openfire
-      - /srv/dev-disk-by-label-KAPITDATA3/ITFiles/3.Backup/DOCKER/Gajim_Openfire/Logs:/var/log/openfire
+      - /srv/DockerFiles/DockerOpenfire/Gajim:/var/lib/openfire
+      - /srv/DockerFiles/DockerOpenfire/Gajim/Logs:/var/log/openfire
