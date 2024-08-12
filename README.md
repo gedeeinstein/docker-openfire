@@ -1,4 +1,4 @@
-# gedeeinstein/openfire:4.8.0
+# gedeeinstein/openfire:4.8.3
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
@@ -17,17 +17,8 @@
 
 Openfire is a real time collaboration (RTC) server licensed under the Open Source Apache License. It uses the only widely adopted open protocol for instant messaging, XMPP (also called Jabber). Openfire is incredibly easy to setup and administer, but offers rock-solid security and performance.
 
-Due to Oracle Java license changes, this image is built exclusively using OpenJDK starting with Openfire 4.8.0
+Due to Oracle Java license changes, this image is built exclusively using OpenJDK starting with Openfire 4.8.3
 
-This project is otherwise almost entirely identical to [sameersbn/openfire](/sameersbn/openfire).
-
-## Contributing
-
-If you find this image useful here's how you can help:
-
-- Send a pull request with your awesome features and bug fixes
-- Help users resolve their [issues](../../issues?q=is%3Aopen+is%3Aissue).
-- Support the development of this image with a [donation](http://www.damagehead.com/donate/)
 
 ## Known issues
 
@@ -37,7 +28,7 @@ Insufficient input validation in the Openfire setup process can cause failures w
 
 ### Openfire doesn't write logs to the normal location
 
-Openfire 4.8.0 and later use Log4j 2, which uses a new configuration file. Please make sure you include a `log4j2.xml` file in your configuration directory, and use the newest 4.7.2 or 4.6.4 image available on Docker Hub.
+Openfire 4.8.3 and later use Log4j 2, which uses a new configuration file. Please make sure you include a `log4j2.xml` file in your configuration directory, and use the newest 4.8.3 or 4.6.4 image available on Docker Hub.
 
 ## Other issues
 
