@@ -54,7 +54,7 @@ docker pull gedeadisurya/openfire:4.9.2
 Alternatively you can build the image yourself.
 
 ```bash
-docker build -t gedeadisurya/openfire github.com/gedeadisurya/gajim
+docker build -t gedeadisurya/openfire github.com/gedeadisurya/docker-openfire
 ```
 
 ## Quickstart
