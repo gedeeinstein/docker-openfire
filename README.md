@@ -75,6 +75,29 @@ gedeadisurya/openfire:latest
 
 ```
 
+
+
+docker run --name openfire -d --restart=always \
+  --publish 448:448/tcp \
+  --publish 5222:5222/tcp \
+  --publish 5223:5223/tcp \
+  --publish 5229:5229/tcp \
+  --publish 5262:5262/tcp \
+  --publish 5263:5263/tcp \
+  --publish 5269:5269/tcp \
+  --publish 5270:5270/tcp \
+  --publish 5275:5275/tcp \
+  --publish 5276:5276/tcp \
+  --publish 7070:7070/tcp \
+  --publish 7443:7443/tcp \
+  --publish 7777:7777/tcp \
+  --publish 9090:9090/tcp \
+  --publish 9091:9091/tcp \
+  --publish 9997:9997/tcp \
+  --volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire:/var/lib/openfire \
+  --volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire/logs:/var/log/openfire \
+  gedeadisurya/openfire:latest
+
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
 
 Point your browser to http://localhost:9090 and follow the setup procedure to complete the installation. The [Build A Free Jabber Server In 10 Minutes](https://www.youtube.com/watch?v=ytUB5qJm5HE#t=246s) video by HAKK5 should help you with the configuration and also introduce you to some of its features.
