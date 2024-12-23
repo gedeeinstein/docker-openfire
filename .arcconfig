@@ -1,0 +1,7 @@
+{
+  "phabricator.uri": "https://gedeadi.my.id/",
+  "repository.callsign": "DO",
+  "load": [
+    "shellcheck-linter"
+  ]
+}

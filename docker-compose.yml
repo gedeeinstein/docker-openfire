@@ -1,0 +1,25 @@
+version: '2'
+services:
+  openfire:
+    image: gedeadisurya/openfire:4.9.2
+    ports:
+      - "9090:9090/tcp"
+      - "9091:9091/tcp"
+      - "5222:5222/tcp"
+      - "7777:7777/tcp"
+      - "448:448/tcp"
+      - "5223:5223/tcp"
+      - "5229:5229/tcp"
+      - "5262:5262/tcp"
+      - "5263:5263/tcp"
+      - "5269:5269/tcp"
+      - "5270:5270/tcp"
+      - "5275:5275/tcp"
+      - "5276:5276/tcp"
+      - "7070:7070/tcp"
+      - "7443:7443/tcp"
+      - "7777:7777/tcp"
+      - "9997:9997/tcp"
+    volumes:
+      - /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire/data:/var/lib/openfire
+      - /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire/logs:/var/log/openfire
