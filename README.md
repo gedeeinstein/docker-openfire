@@ -71,7 +71,7 @@ docker run --name openfire -d --restart=always  --publish 448:448/tcp --publish 
 --volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire/conf:/var/lib/openfire/conf
 --volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire/lib:/var/lib/openfire/lib
 
-gedeadisurya/openfire:4.9.2
+gedeadisurya/openfire:latest
 
 ```
 
