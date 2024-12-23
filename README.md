@@ -63,22 +63,8 @@ Start Openfire using:
 
 ```bash
 docker run --name openfire -d --restart=always \
-  --publish 448:448/tcp \
-  --publish 5222:5222/tcp \
-  --publish 5223:5223/tcp \
-  --publish 5229:5229/tcp \
-  --publish 5262:5262/tcp \
-  --publish 5263:5263/tcp \
-  --publish 5269:5269/tcp \
-  --publish 5270:5270/tcp \
-  --publish 5275:5275/tcp \
-  --publish 5276:5276/tcp \
-  --publish 7070:7070/tcp \
-  --publish 7443:7443/tcp \
-  --publish 7777:7777/tcp \
-  --publish 9090:9090/tcp \
-  --publish 9091:9091/tcp \
-  --publish 9997:9997/tcp \
+  --publish 448:448/tcp --publish 5222:5222/tcp --publish 5223:5223/tcp --publish 5229:5229/tcp --publish 5262:5262/tcp --publish 5263:5263/tcp --publish 5269:5269/tcp --publish 5270:5270/tcp --publish 5275:5275/tcp --publish 5276:5276/tcp --publish 7070:7070/tcp --publish 7443:7443/tcp --publish 7777:7777/tcp --publish 9090:9090/tcp --publish 9091:9091/tcp --publish 9997:9997/tcp 
+  
   --volume /srv/docker/openfire:/var/lib/openfire \
   gedeadisurya/openfire:4.9.2
 
