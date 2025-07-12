@@ -1,4 +1,4 @@
-# gedeadisurya/openfire:4.9.2
+# gedeadisurya/openfire:5.0.1
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
@@ -48,7 +48,7 @@ If the above recommendations do not help then [report your issue](../../issues/n
 Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/gedeadisurya/openfire) and is the recommended method of installation.
 
 ```bash
-docker pull gedeadisurya/openfire:4.9.2
+docker pull gedeadisurya/openfire:5.0.1
 ```
 
 Alternatively you can build the image yourself.
@@ -64,12 +64,12 @@ Start Openfire using:
 ```bash
 docker run --name openfire -d --restart=always  --publish 448:448/tcp --publish 5222:5222/tcp --publish 5223:5223/tcp --publish 5229:5229/tcp --publish 5262:5262/tcp --publish 5263:5263/tcp --publish 5269:5269/tcp --publish 5270:5270/tcp --publish 5275:5275/tcp --publish 5276:5276/tcp --publish 7070:7070/tcp --publish 7443:7443/tcp --publish 7777:7777/tcp --publish 9090:9090/tcp --publish 9091:9091/tcp --publish 9997:9997/tcp 
 
---volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire/data:/var/lib/openfire 
---volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire/logs:/var/log/openfire  
---volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire/plugins:/var/lib/openfire/plugins 
---volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire/backup:/var/lib/openfire/backup
---volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire/conf:/var/lib/openfire/conf
---volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire/lib:/var/lib/openfire/lib
+--volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/5.0.1/openfire/data:/var/lib/openfire 
+--volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/5.0.1/openfire/logs:/var/log/openfire  
+--volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/5.0.1/openfire/plugins:/var/lib/openfire/plugins 
+--volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/5.0.1/openfire/backup:/var/lib/openfire/backup
+--volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/5.0.1/openfire/conf:/var/lib/openfire/conf
+--volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/5.0.1/openfire/lib:/var/lib/openfire/lib
 
 gedeadisurya/openfire:latest
 
@@ -94,8 +94,8 @@ docker run --name openfire -d --restart=always \
   --publish 9090:9090/tcp \
   --publish 9091:9091/tcp \
   --publish 9997:9997/tcp \
-  --volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire:/var/lib/openfire \
-  --volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/v492/openfire/logs:/var/log/openfire \
+  --volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/5.0.1/openfire:/var/lib/openfire \
+  --volume /srv/dev-disk-by-label-KAPIDATA/OpenfireDocker/5.0.1/openfire/logs:/var/log/openfire \
   gedeadisurya/openfire:latest
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
@@ -122,7 +122,7 @@ You may append options to the startup command to configure the JVM:
 ```bash
 docker run -name openfire -d \
   [DOCKER_OPTIONS] \
-  gedeadisurya/openfire:4.9.2 \
+  gedeadisurya/openfire:5.0.1 \
   -XX:+UseConcMarkSweepGC -XX:+CMSIncrementalMode
 ```
 
@@ -143,7 +143,7 @@ To upgrade to newer releases:
   1. Download the updated Docker image:
 
   ```bash
-  docker pull gedeadisurya/openfire:4.9.2
+  docker pull gedeadisurya/openfire:5.0.1
   ```
 
   2. Stop the currently running image:
@@ -163,7 +163,7 @@ To upgrade to newer releases:
   ```bash
   docker run -name openfire -d \
     [OPTIONS] \
-    gedeadisurya/openfire:4.9.2
+    gedeadisurya/openfire:5.0.1
   ```
 
 ## Shell Access
