@@ -1,23 +1,67 @@
-FROM openjdk:17-jdk-slim-bullseye
+#
+# Openfire Dockerfile
+# https://github.com/gedeeinstein/docker-openfire
+#
 
-ENV OPENFIRE_VERSION=5.0.1 \
-    OPENFIRE_USER=openfire \
-    OPENFIRE_DATA_DIR=/var/lib/openfire \
-    OPENFIRE_LOG_DIR=/var/log/openfire
+# 1. Set the Base Image to Ubuntu 24.04
+FROM ubuntu:24.04
 
-RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y sudo wget fontconfig libfreetype6 \
- && echo "Downloading openfire_${OPENFIRE_VERSION}_all.deb ..." \
- && wget --no-verbose "http://download.igniterealtime.org/openfire/openfire_${OPENFIRE_VERSION}_all.deb" -O /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
- && dpkg -i --force-depends /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
- && mv /var/lib/openfire/plugins/admin /usr/share/openfire/plugin-admin \
- && ln -s /usr/local/openjdk-17/bin/java /usr/bin/java \
- && rm -rf /tmp/openfire_${OPENFIRE_VERSION}_all.deb \
- && rm -rf /var/lib/apt/lists/*
+# Maintainer
+LABEL maintainer="Your Name <your.email@example.com>"
 
-COPY entrypoint.sh /sbin/entrypoint.sh
-RUN chmod 755 /sbin/entrypoint.sh
+# Set environment variables to avoid interactive prompts during installation
+ENV DEBIAN_FRONTEND=noninteractive
 
-EXPOSE 3478/tcp 3479/tcp 5222/tcp 5223/tcp 5229/tcp 5275/tcp 5276/tcp 5262/tcp 5263/tcp 7070/tcp 7443/tcp 7777/tcp 9090/tcp 9091/tcp
-VOLUME ["${OPENFIRE_DATA_DIR}"]
-ENTRYPOINT ["/sbin/entrypoint.sh"]
+# Define Openfire version and download URL
+ARG OPENFIRE_VERSION=5.0.1
+ARG OPENFIRE_URL=https://igniterealtime.org/downloadServlet?filename=openfire/openfire_${OPENFIRE_VERSION}_all.deb
+ARG OPENFIRE_HOME=/var/lib/openfire
+
+# 2. Update, install dependencies, and download Openfire
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ca-certificates \
+    wget \
+    # Openfire requires a Java Runtime Environment. 'headless' is smaller.
+    default-jre-headless && \
+    echo "Downloading Openfire ${OPENFIRE_VERSION}..." && \
+    wget -O /tmp/openfire.deb "${OPENFIRE_URL}" && \
+    echo "Installing Openfire..." && \
+    dpkg -i /tmp/openfire.deb && \
+    # Clean up to reduce image size
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/*
+
+# 3. Define mountable directories for persistent data.
+VOLUME [ \
+  "${OPENFIRE_HOME}/conf", \
+  "${OPENFIRE_HOME}/plugins", \
+  "${OPENFIRE_HOME}/embedded-db", \
+  "${OPENFIRE_HOME}/logs", \
+  "${OPENFIRE_HOME}/resources/security" \
+]
+
+# 4. Expose the necessary ports for Openfire and its components
+# 9090: Admin Console (HTTP)
+# 9091: Admin Console (HTTPS)
+# 5222: Client to Server (Standard XMPP)
+# 5223: Client to Server (Old SSL)
+# 7777: File Transfer Proxy
+# 448: Google Play Services (FCM) - Note: This is an outbound port, exposing it is unusual.
+# 5229: Flash Cross Domain
+# 5262: Server to Server (Dialback - Legacy)
+# 5263: Server to Server (Dialback - SSL Legacy)
+# 5269: Server to Server (Federation)
+# 5270: Server to Server (Federation - Old SSL)
+# 5275: Component Protocol (External Components)
+# 5276: Component Protocol (External Components - SSL)
+# 7070: HTTP Binding (BOSH)
+# 7443: HTTPS Binding (BOSH)
+# 9997: Not a standard Openfire port, included as requested.
+EXPOSE 9090 9091 5222 5223 7777 448 5229 5262 5263 5269 5270 5275 5276 7070 7443 9997
+
+# Set the working directory
+WORKDIR ${OPENFIRE_HOME}
+
+# Set the entrypoint to start Openfire
+ENTRYPOINT ["/usr/bin/openfire.sh"]
